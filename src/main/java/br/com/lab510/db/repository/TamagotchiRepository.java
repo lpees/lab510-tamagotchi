@@ -2,6 +2,7 @@ package br.com.lab510.db.repository;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +15,8 @@ import lombok.Data;
 @Data
 public class TamagotchiRepository {
 	
-	private JdbcTemplate jdbcTemplate = new JdbcTemplate(DatabaseConfig.dataSource());
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 	
 	public List<TamagotchiDTO> getAllTamagotchi(){
 		return jdbcTemplate.query("SELECT * FROM TAMAGOTCHI", 

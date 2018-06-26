@@ -3,6 +3,7 @@ package br.com.lab510.db;
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 
@@ -19,4 +20,11 @@ public class DatabaseConfig {
 		 
 		return ds;
 	}
+	
+	@Bean
+	public void jdbcTemplate() {
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource());
+	}
+	
+	
 }
